@@ -1,6 +1,4 @@
 import requests
-import json
-import os
 
 from pandaharvester.harvestercore import core_utils
 from pandaharvester.harvestercore.plugin_base import PluginBase
@@ -10,8 +8,10 @@ from pandaharvester.harvestermisc.superfacility_utils import SuperfacilityClient
 # logger
 baseLogger = core_utils.setup_logger("superfacility_monitor")
 
+
 # monitor for SuperFacility API
 class SuperfacilityMonitor(PluginBase):
+    """Monitor plugin for SuperFacility API to check worker status via SLURM job queries."""
     # constructor
     def __init__(self, **kwarg):
         PluginBase.__init__(self, **kwarg)
