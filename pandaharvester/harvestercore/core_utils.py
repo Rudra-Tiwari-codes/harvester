@@ -435,7 +435,9 @@ def update_job_attributes_with_workers(map_type, jobspec_list, workspec_list, fi
             # live core count
             jobSpec.nCore = nCore
         # combine worker attributes and set it to job
-        # FIXME
+        # NOTE: Worker attributes aggregation from multiple workers is not implemented.
+        # For MultiWorkers mapping, attributes need to be merged from all workers in workspec_list.
+        # This requires careful handling to avoid conflicts when multiple workers report different values.
         # jobSpec.set_attributes(workAttributes)
         # add files
         outFileAttrs = jobSpec.get_output_file_attributes()
