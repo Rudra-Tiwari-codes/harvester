@@ -73,11 +73,11 @@ class GoPreparator(PluginBase):
             errStr = "failed to get transfer task"
             tmpLog.error(errStr)
             return None, errStr
-        # return a fatal error when task is missing # FIXME retry instead?
+        # return a temporary error when task is missing to allow retry
         if label not in transferTasks:
             errStr = "transfer task is missing"
-            tmpLog.error(errStr)
-            return False, errStr
+            tmpLog.warning(errStr)
+            return None, errStr
         # succeeded
         if transferTasks[label]["status"] == "SUCCEEDED":
             transferID = transferTasks[label]["task_id"]
